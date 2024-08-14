@@ -7,10 +7,15 @@
 // Copyright © Playful Logic Studios, LLC 2024. All rights reserved.
 // 
 
-
+import HealthKitUI
 import SwiftUI
 
 struct HealthKitPrimingView: View {
+    
+    @Environment(HealthKitManager.self) private var hkManager
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var isShowingHealthKitPermissions: Bool = false
     
     var description: String = """
     This app displays your step and weight data in interactive charts.
@@ -35,15 +40,29 @@ struct HealthKitPrimingView: View {
             }
             
             Button("Connect to Apple Health") {
-                // code to  come
+                isShowingHealthKitPermissions = true
             }
             .buttonStyle(.borderedProminent)
             .tint(.pink)
         }
         .padding(30)
+        .healthDataAccessRequest(
+            store: hkManager.store,
+            shareTypes: hkManager.types,
+            readTypes: hkManager.types,
+            trigger: isShowingHealthKitPermissions) { result in
+                switch result {
+                case .success(_):
+                    dismiss()
+                case .failure(_):
+                    // handle error later
+                    dismiss()
+                }
+            }
     }
 }
 
 #Preview {
     HealthKitPrimingView()
+        .environment(HealthKitManager())
 }
