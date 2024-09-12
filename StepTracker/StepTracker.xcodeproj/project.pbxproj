@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52007FCA2C93463700CF4BE6 /* Ext+HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52007FC92C93463700CF4BE6 /* Ext+HealthKitManager.swift */; };
+		52007FCC2C9378BB00CF4BE6 /* HealthMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52007FCB2C9378BB00CF4BE6 /* HealthMetric.swift */; };
 		522C8DD62C6D0B4900F3679B /* HealthDataListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522C8DD52C6D0B4900F3679B /* HealthDataListView.swift */; };
 		527CED6A2C6D565F00094B52 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CED692C6D565F00094B52 /* HealthKitManager.swift */; };
 		52B158BA2C6D38A800B63D7F /* HealthKitPrimingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B158B92C6D38A800B63D7F /* HealthKitPrimingView.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		52007FC92C93463700CF4BE6 /* Ext+HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+HealthKitManager.swift"; sourceTree = "<group>"; };
+		52007FCB2C9378BB00CF4BE6 /* HealthMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMetric.swift; sourceTree = "<group>"; };
 		522C8DD52C6D0B4900F3679B /* HealthDataListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataListView.swift; sourceTree = "<group>"; };
 		527CED692C6D565F00094B52 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		52B158B92C6D38A800B63D7F /* HealthKitPrimingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPrimingView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				52B158B92C6D38A800B63D7F /* HealthKitPrimingView.swift */,
 				527CED692C6D565F00094B52 /* HealthKitManager.swift */,
 				52007FC92C93463700CF4BE6 /* Ext+HealthKitManager.swift */,
+				52007FCB2C9378BB00CF4BE6 /* HealthMetric.swift */,
 				52E7F7442C6CF4B5009B27B5 /* Assets.xcassets */,
 				52E7F7462C6CF4B5009B27B5 /* Preview Content */,
 			);
@@ -157,6 +160,7 @@
 				527CED6A2C6D565F00094B52 /* HealthKitManager.swift in Sources */,
 				52007FCA2C93463700CF4BE6 /* Ext+HealthKitManager.swift in Sources */,
 				52E7F7412C6CF4B3009B27B5 /* StepTrackerApp.swift in Sources */,
+				52007FCC2C9378BB00CF4BE6 /* HealthMetric.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

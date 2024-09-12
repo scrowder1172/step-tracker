@@ -8,6 +8,7 @@
 // 
 
 
+import Charts
 import SwiftUI
 
 enum HealthMetricContext: CaseIterable, Identifiable {
@@ -69,9 +70,12 @@ struct DashboardView: View {
                             .padding(.bottom, 12)
                         }
                         
-                        RoundedRectangle(cornerRadius: 12)
-                            .foregroundStyle(.secondary)
-                            .frame(height: 150)
+                        Chart {
+                            ForEach(hkManager.stepData) { steps in
+                                BarMark(x: .value("Date", steps.date, unit: .day), y: .value("Steps", steps.value))
+                            }
+                        }
+                        .frame(height: 150)
                     }
                     .padding()
                     .background(
