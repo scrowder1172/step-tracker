@@ -17,4 +17,6 @@ class HealthKitManager {
     let store = HKHealthStore()
     
     let types: Set = [HKQuantityType(.stepCount), HKQuantityType(.bodyMass)]
+    
+    
 }

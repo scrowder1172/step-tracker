@@ -28,7 +28,7 @@ enum HealthMetricContext: CaseIterable, Identifiable {
 }
 
 struct DashboardView: View {
-    
+    @Environment(HealthKitManager.self) private var hkManager
     @AppStorage("hasSeenPermissionPriming") private var hasSeenPermissionPrimingView: Bool = false
     @State private var isShowingPermissionPriminingSheet: Bool = false
     
@@ -103,7 +103,8 @@ struct DashboardView: View {
             }
             .navigationTitle("Dashboard")
             .padding()
-            .onAppear {
+            .task {
+//                await hkManager.addSimulatorData()
                 isShowingPermissionPriminingSheet = !hasSeenPermissionPrimingView
             }
             .navigationDestination(for: HealthMetricContext.self) { metric in
