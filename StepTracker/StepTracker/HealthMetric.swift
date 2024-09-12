@@ -14,4 +14,19 @@ struct HealthMetric: Identifiable {
     let id: UUID = UUID()
     let date: Date  // x-axis
     let value: Double  // y-axis
+    
+    static var mockData: [HealthMetric] {
+        var array: [HealthMetric] = []
+        
+        for i in 0..<28 {
+            let metric: HealthMetric = HealthMetric(
+                date: Calendar.current.date(byAdding: .day, value: -i, to: .now)!,
+                value: .random(in: 4_000...20_000)
+            )
+            
+            array.append(metric)
+        }
+        
+        return array
+    }
 }
