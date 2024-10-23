@@ -11,6 +11,7 @@
 		52007FCC2C9378BB00CF4BE6 /* HealthMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52007FCB2C9378BB00CF4BE6 /* HealthMetric.swift */; };
 		522C8DD62C6D0B4900F3679B /* HealthDataListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522C8DD52C6D0B4900F3679B /* HealthDataListView.swift */; };
 		525A6E642CC9724300021C18 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 525A6E632CC9724300021C18 /* Algorithms */; };
+		525A6E662CC978FE00021C18 /* StepPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A6E652CC978FE00021C18 /* StepPieChart.swift */; };
 		527CED6A2C6D565F00094B52 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CED692C6D565F00094B52 /* HealthKitManager.swift */; };
 		528E88EB2CC965DF00ED7680 /* StepBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528E88EA2CC965DF00ED7680 /* StepBarChart.swift */; };
 		528E88F22CC969BE00ED7680 /* ChartMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528E88F12CC969BE00ED7680 /* ChartMath.swift */; };
@@ -27,6 +28,7 @@
 		52007FC92C93463700CF4BE6 /* Ext+HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+HealthKitManager.swift"; sourceTree = "<group>"; };
 		52007FCB2C9378BB00CF4BE6 /* HealthMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMetric.swift; sourceTree = "<group>"; };
 		522C8DD52C6D0B4900F3679B /* HealthDataListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataListView.swift; sourceTree = "<group>"; };
+		525A6E652CC978FE00021C18 /* StepPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepPieChart.swift; sourceTree = "<group>"; };
 		527CED692C6D565F00094B52 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		528E88EA2CC965DF00ED7680 /* StepBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBarChart.swift; sourceTree = "<group>"; };
 		528E88F12CC969BE00ED7680 /* ChartMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartMath.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				528E88EA2CC965DF00ED7680 /* StepBarChart.swift */,
 				528E88F12CC969BE00ED7680 /* ChartMath.swift */,
 				528E88F32CC969E000ED7680 /* ChartDataTypes.swift */,
+				525A6E652CC978FE00021C18 /* StepPieChart.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				528E88F42CC969E000ED7680 /* ChartDataTypes.swift in Sources */,
 				52007FCA2C93463700CF4BE6 /* Ext+HealthKitManager.swift in Sources */,
 				52E7F7412C6CF4B3009B27B5 /* StepTrackerApp.swift in Sources */,
+				525A6E662CC978FE00021C18 /* StepPieChart.swift in Sources */,
 				528E88F62CC96A5E00ED7680 /* Ext+Date.swift in Sources */,
 				52007FCC2C9378BB00CF4BE6 /* HealthMetric.swift in Sources */,
 			);
