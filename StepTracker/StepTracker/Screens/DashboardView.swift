@@ -51,10 +51,14 @@ struct DashboardView: View {
                     }
                     .pickerStyle(.segmented)
                     
-                    // StepBarChart reference goes here
-                    StepBarChart(selectedStat: selectedStat, chartData: hkManager.stepData)
-                    
-                    StepPieChart(chartData: ChartMath.averageWeekdayCount(for: hkManager.stepData))
+                    switch selectedStat {
+                    case .steps:
+                        StepBarChart(selectedStat: selectedStat, chartData: hkManager.stepData)
+                        StepPieChart(chartData: ChartMath.averageWeekdayCount(for: hkManager.stepData))
+                    case .weight:
+                        WeightLineChart(selectedStat: selectedStat, chartData: hkManager.weightData)
+                        WeightDiffBarChart(chartData: ChartMath.averageDailyWeightDiffs(for: hkManager.weightDiffData))
+                    }
                 }
             }
             .navigationTitle("Dashboard")
@@ -62,7 +66,8 @@ struct DashboardView: View {
             .task {
 //                await hkManager.addSimulatorData()
                 await hkManager.fetchStepCount()
-                await hkManager.fetchWeightsCount()
+                await hkManager.fetchWeights()
+                await hkManager.fetchWeightForDiff()
                 isShowingPermissionPriminingSheet = !hasSeenPermissionPrimingView
             }
             .navigationDestination(for: HealthMetricContext.self) { metric in
