@@ -18,6 +18,9 @@ class HealthKitManager {
     
     let types: Set = [HKQuantityType(.stepCount), HKQuantityType(.bodyMass)]
     
+    var stepData: [HealthMetric] = []
+    var weightData: [HealthMetric] = []
+    
     func fetchStepCount() async {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: .now)
@@ -41,6 +44,10 @@ class HealthKitManager {
             
             for steps in stepCounts.statistics() {
                 print("Steps: \(steps.startDate) - \(steps.endDate) => \(steps.sumQuantity()!)")
+            }
+            
+            stepData = stepCounts.statistics().map {
+                HealthMetric(date: $0.startDate, value: $0.sumQuantity()?.doubleValue(for: .count()) ?? 0)
             }
         } catch {
             print("Error getting step counts: \(error.localizedDescription)")
@@ -70,6 +77,10 @@ class HealthKitManager {
             
             for weights in weightCounts.statistics() {
                 print("Weight: \(weights.startDate) => \(weights.mostRecentQuantity()!.doubleValue(for: .pound()))")
+            }
+            
+            weightData = weightCounts.statistics().map {
+                HealthMetric(date: $0.startDate, value: $0.mostRecentQuantity()?.doubleValue(for: .pound()) ?? 0)
             }
         } catch {
             print("Error getting step counts: \(error.localizedDescription)")
