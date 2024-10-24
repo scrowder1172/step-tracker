@@ -61,7 +61,7 @@ struct StepPieChart: View {
                         if let selectedWeekday {
                             VStack {
                                 Text(selectedWeekday.date.weekdayTitle)
-                                    .font(.title3)
+                                    .font(.title3).bold()
                                     .contentTransition(.identity)
                                 
                                 Text(selectedWeekday.value, format: .number.precision(.fractionLength(0)))
@@ -69,7 +69,7 @@ struct StepPieChart: View {
                                     .foregroundStyle(.secondary)
                                     .contentTransition(.numericText())
                             }
-                            .position(x: frame.midX, y: 10.0)
+                            .position(x: frame.midX, y: frame.midY)
                         }
                     }
                 }

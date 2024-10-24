@@ -20,13 +20,14 @@ class HealthKitManager {
     
     var stepData: [HealthMetric] = []
     var weightData: [HealthMetric] = []
+    var weightDiffData: [HealthMetric] = []
     
     func fetchStepCount() async {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: .now)
         
         guard let endDate = calendar.date(byAdding: .day, value: 1, to: today) else { return }
-        guard let startDate = calendar.date(byAdding: .day, value: -28, to: endDate) else { return }
+        guard let startDate = calendar.date(byAdding: .day, value: -29, to: endDate) else { return }
         
         let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
         let sampleType: HKQuantityType = HKQuantityType(.stepCount)
@@ -54,7 +55,7 @@ class HealthKitManager {
         }
     }
     
-    func fetchWeightsCount() async {
+    func fetchWeights() async {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: .now)
         
@@ -80,6 +81,39 @@ class HealthKitManager {
             }
             
             weightData = weightCounts.statistics().map {
+                HealthMetric(date: $0.startDate, value: $0.mostRecentQuantity()?.doubleValue(for: .pound()) ?? 0)
+            }
+        } catch {
+            print("Error getting step counts: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchWeightForDiff() async {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: .now)
+        
+        guard let endDate = calendar.date(byAdding: .day, value: 1, to: today) else { return }
+        guard let startDate = calendar.date(byAdding: .day, value: -28, to: endDate) else { return }
+        
+        let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let sampleType: HKQuantityType = HKQuantityType(.bodyMass)
+        let samplePredicate = HKSamplePredicate.quantitySample(type: sampleType, predicate: queryPredicate)
+        
+        let weightsQuery = HKStatisticsCollectionQueryDescriptor(
+            predicate: samplePredicate,
+            options: .mostRecent,
+            anchorDate: endDate,
+            intervalComponents: .init(day: 1)
+        )
+        
+        do {
+            let weightCounts = try await weightsQuery.result(for: store)
+            
+            for weights in weightCounts.statistics() {
+                print("Weight: \(weights.startDate) => \(weights.mostRecentQuantity()!.doubleValue(for: .pound()))")
+            }
+            
+            weightDiffData = weightCounts.statistics().map {
                 HealthMetric(date: $0.startDate, value: $0.mostRecentQuantity()?.doubleValue(for: .pound()) ?? 0)
             }
         } catch {

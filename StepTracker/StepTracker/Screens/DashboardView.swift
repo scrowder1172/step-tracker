@@ -65,7 +65,8 @@ struct DashboardView: View {
             .task {
 //                await hkManager.addSimulatorData()
                 await hkManager.fetchStepCount()
-                await hkManager.fetchWeightsCount()
+                await hkManager.fetchWeights()
+                ChartMath.averageDailyWeightDiffs(for: hkManager.weightDiffData)
                 isShowingPermissionPriminingSheet = !hasSeenPermissionPrimingView
             }
             .navigationDestination(for: HealthMetricContext.self) { metric in
